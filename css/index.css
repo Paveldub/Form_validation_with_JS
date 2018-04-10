@@ -1,3 +1,12 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
 #wrapper {
   width: 30%;
   margin: 50px auto;
@@ -28,7 +37,89 @@ form {
   border: none;
   margin-top: 5px;
   color: white;
-  background-color: #3b5998;
+  background-color: coral;
   border-radius: 5px;
   padding: 12px;
+  transition: .2s;
+}
+
+.btn:hover {
+  background: #333;
+  transition: .2s;
+}
+
+/* modal-dialog */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0, .5);
+}
+
+.modal__content {
+  background-color: #f4f4f4;
+  margin: 14% auto;
+  width: 35%;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0, .2), 0 7px 20px 0 rgba(0,0,0, .17);
+  animation-name: modalopen;
+  animation-duration: .6s;
+}
+
+.closeBtn {
+  color: #fff;
+  float: right;
+  font-size: 30px;
+  transition: .1s;
+}
+
+.closeBtn:hover, .closeBtn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .1s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0
+  } to {
+    opacity: 1
+  }
+}
+
+.modal__header {
+  padding: 15px;
+  background: coral;
+  color: #fff;
+  text-align: center;
+}
+
+.modal__body {
+  padding: 15px;
+  color: coral;
+  text-align: center;
+}
+
+.modal__footer {
+  padding: 15px;
+  background: coral;
+  color: #fff;
+  text-align: center;
+}
+
+.modal__header h2 {
+  text-transform: uppercase;
+}
+
+.modal__body {
+  text-transform: uppercase;
+}
+
+.modal__footer {
+  text-transform: uppercase;
 }
