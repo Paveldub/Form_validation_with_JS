@@ -1,6 +1,6 @@
-let button = document.getElementById('button');
+let button = document.getElementById("button");
 
-button.onsubmit = function(e) {
+button.onclick = function(e) {
   e.preventDefault();
 
   // GETTING ALL TEXT OBJECTS
@@ -19,8 +19,21 @@ button.onsubmit = function(e) {
   email.addEventListener("blur", emailVerify, true);
   password.addEventListener("blur", passwordVerify, true);
 
+  // AJAX variables
+  let userInput = document.forms.vform.username.value;
+  let userEmail = document.forms.vform.email.value;
+  let userPassword = document.forms.vform.password.value;
+  let userPassConf = document.forms.vform.password_confirmation.value;
+  let xhr = new XMLHttpRequest();
+  let formData = new FormData(document.forms.vform);
+
+  userInput = encodeURIComponent(userInput); // стандарт, чтобы не поломался запрос
+  userEmail = encodeURIComponent(userEmail);
+  userPassword = encodeURIComponent(userPassword);
+  userPassConf = encodeURIComponent(userPassConf);
+
   // Validation function
-  function validation() {
+  let validation = function() {
     // username validation
     if (username.value == "") {
       username.style.border = "1px solid red";
@@ -78,35 +91,11 @@ button.onsubmit = function(e) {
       return true;
     }
   }
+
+  xhr.open("POST", "index.php");
+
+  xhr.send(formData);
+
+  validation();
 };
 
-// AJAX
-let servResponse = document.querySelector("#response");
-
-button.onsubmit = function(e) {
-    e.preventDefault();
-
-    let userInput = document.forms.vform.username.value;
-    let userEmail = document.forms.vform.email.value;
-    let userPassword = document.forms.vform.password.value;
-    let userPassConf = document.forms.vform.password_confirmation.value;
-
-    userInput = encodeURIComponent(userInput); // стандарт, чтобы не поломался запрос
-    userEmail = encodeURIComponent(userEmail);
-    userPassword = encodeURIComponent(userPassword);
-    userPassConf = encodeURIComponent(userPassConf);
-
-    let xhr = new XMLHttpRequest();
-
-    xhr.open('POST', 'index.php');
-
-    let formData = new FormData(document.forms.vform);
-
-    xhr.onreadystatechange = function() {
-        if(xhr.readyState === 4 && xhr.status === 200) {
-            servResponse.textContent = xhr.responseText;
-        }
-    }
-
-    xhr.send(formData);
-};
