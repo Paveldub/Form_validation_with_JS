@@ -12,7 +12,7 @@
 <body>
     <div id="wrapper">
        <div id="response"></div>
-       <form action="index.php" name="vform" onsubmit="return Validate()">
+       <form action="index.php" name="vform">
             <div>
                 <input type="text" name="username" class="textInput" placeholder="Username">
                 <div id="name_error" class="val_error"></div>
@@ -29,7 +29,7 @@
                 <div id="password_error" class="val_error"></div>
             </div>
             <div>
-                <input type="submit" value="Submit" class="btn" name="register">
+                <input type="submit" value="Submit" class="btn" name="register" id="button">
             </div>
        </form>
     </div>
