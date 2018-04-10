@@ -146,6 +146,8 @@ button.onclick = function(e) {
     alert( xhr.responseText ); // responseText -- текст ответа.
   }
 
+  document.getElementById('form').reset();
+
   validation();
 };
 
