@@ -64,7 +64,7 @@ form {
 .modal__content {
   background-color: #f4f4f4;
   margin: 14% auto;
-  width: 35%;
+  width: 60%;
   box-shadow: 0 5px 8px 0 rgba(0,0,0, .2), 0 7px 20px 0 rgba(0,0,0, .17);
   animation-name: modalopen;
   animation-duration: .6s;
@@ -122,4 +122,8 @@ form {
 
 .modal__footer {
   text-transform: uppercase;
+}
+
+#body {
+  overflow: visible;
 }

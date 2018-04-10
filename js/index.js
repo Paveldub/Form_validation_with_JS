@@ -7,6 +7,9 @@ let modalBtn = document.getElementById('button');
 // Get close button
 let closeBtn = document.getElementsByClassName('closeBtn')[0];
 
+// Body overflow hidden
+let body = document.getElementById('body');
+
 // Listen for open click
 modalBtn.addEventListener('click', openModal);
 
@@ -19,17 +22,20 @@ window.addEventListener('click', outsideClick);
 // Function to open modal
 function openModal() {
   modal.style.display = 'block';
+  body.style.overflow = 'hidden';
 }
 
 // Function to close modal
 function closeModal() {
   modal.style.display = 'none';
+  body.style.overflow = 'visible';
 }
 
 // Function to close modal if outside click
 function outsideClick(e) {
   if(e.target == modal) {
     modal.style.display = 'none';
+    body.style.overflow = 'visible';
   }
 }
 
@@ -91,7 +97,7 @@ button.onclick = function(e) {
       return false;
     }
     // Check if the two passwords match
-    if (password.value != password_confirmation.value) {
+    if (password.value !== password_confirmation.value) {
       password.style.border = "1px solid red";
       password_confirmation.style.border = "1px solid red";
       password_error.innerHTML = "The two passwords do not match";
