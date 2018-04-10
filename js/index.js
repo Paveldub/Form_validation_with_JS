@@ -1,41 +1,32 @@
 // Get modal element
-let modal = document.getElementById('simpleModal');
+let modal = document.getElementById("simpleModal");
 
 // Get open modal
-let modalBtn = document.getElementById('button');
+let modalBtn = document.getElementById("button");
 
 // Get close button
-let closeBtn = document.getElementsByClassName('closeBtn')[0];
+let closeBtn = document.getElementsByClassName("closeBtn")[0];
 
 // Body overflow hidden
-let body = document.getElementById('body');
-
-// Listen for open click
-modalBtn.addEventListener('click', openModal);
+let body = document.getElementById("body");
 
 // Listen for close click
-closeBtn.addEventListener('click', closeModal);
+closeBtn.addEventListener("click", closeModal);
 
 // Lister for outside click
-window.addEventListener('click', outsideClick);
-
-// Function to open modal
-function openModal() {
-  modal.style.display = 'block';
-  body.style.overflow = 'hidden';
-}
+window.addEventListener("click", outsideClick);
 
 // Function to close modal
 function closeModal() {
-  modal.style.display = 'none';
-  body.style.overflow = 'visible';
+  modal.style.display = "none";
+  body.style.overflow = "visible";
 }
 
 // Function to close modal if outside click
 function outsideClick(e) {
-  if(e.target == modal) {
-    modal.style.display = 'none';
-    body.style.overflow = 'visible';
+  if (e.target == modal) {
+    modal.style.display = "none";
+    body.style.overflow = "visible";
   }
 }
 
@@ -54,6 +45,10 @@ button.onclick = function(e) {
   let name_error = document.getElementById("name_error");
   let email_error = document.getElementById("email_error");
   let password_error = document.getElementById("password_error");
+
+  // Modal dialog
+  // Listen for open click
+  modalBtn.addEventListener("click", openModal);
 
   // SETTING ALL EVENT LISTENERS
   username.addEventListener("blur", nameVerify, true);
@@ -103,7 +98,7 @@ button.onclick = function(e) {
       password_error.innerHTML = "The two passwords do not match";
       return false;
     }
-  }
+  };
 
   // Event handler functions
   function nameVerify() {
@@ -133,9 +128,23 @@ button.onclick = function(e) {
     }
   }
 
+  // Function to open modal
+  function openModal() {
+    modal.style.display = "block";
+    body.style.overflow = "hidden";
+  }
+
   xhr.open("POST", "index.php");
 
   xhr.send(formData);
+  
+  if (xhr.status != 200) {
+    // обработать ошибку
+    alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+  } else {
+    // вывести результат
+    alert( xhr.responseText ); // responseText -- текст ответа.
+  }
 
   validation();
 };
