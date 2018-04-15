@@ -33,9 +33,6 @@ function outsideClick(e) {
 
 let button = document.getElementById("button");
 
-button.onclick = function(e) {
-  e.preventDefault();
-
   // GETTING ALL TEXT OBJECTS
   let username = document.forms["vform"]["username"];
   let email = document.forms["vform"]["email"];
@@ -46,10 +43,6 @@ button.onclick = function(e) {
   let name_error = document.getElementById("name_error");
   let email_error = document.getElementById("email_error");
   let password_error = document.getElementById("password_error");
-
-  // Modal dialog
-  // Listen for open click
-  modalBtn.addEventListener("click", openModal);
 
   // SETTING ALL EVENT LISTENERS
   username.addEventListener("blur", nameVerify, true);
@@ -70,35 +63,24 @@ button.onclick = function(e) {
   userPassConf = encodeURIComponent(userPassConf);
 
   // Validation function
-  let validation = function() {
-    // username validation
+  function validation () {
     if (username.value == "") {
       username.style.border = "1px solid red";
       name_error.textContent = "User name is required";
       username.focus();
       return false;
-    }
-    // email validation
-    if (email.value == "") {
+    } else  if (email.value == "") {
       email.style.border = "1px solid red";
       email_error.textContent = "Email is required";
       email.focus();
       return false;
-    }
-    // password validation
-    if (password.value == "") {
+    } else if (password.value == "") {   
       password.style.border = "1px solid red";
       password_error.textContent = "Password is required";
       password.focus();
       return false;
-    }
-    // Check if the two passwords match
-    if (password.value !== password_confirmation.value) {
-      password.style.border = "1px solid red";
-      password_confirmation.style.border = "1px solid red";
-      password_error.innerHTML = "The two passwords do not match";
-      return false;
-    }
+    } else {
+      return true;
   };
 
   // Event handler functions
@@ -109,6 +91,7 @@ button.onclick = function(e) {
       name_error.innerHTML = "";
       return true;
     }
+    return false;
   }
 
   function emailVerify() {
@@ -118,6 +101,7 @@ button.onclick = function(e) {
       email_error.innerHTML = "";
       return true;
     }
+    return false;
   }
 
   function passwordVerify() {
@@ -127,6 +111,7 @@ button.onclick = function(e) {
       password_error.innerHTML = "";
       return true;
     }
+    return false;
   }
 
   // Function to open modal
@@ -134,14 +119,21 @@ button.onclick = function(e) {
     modal.style.display = "block";
     body.style.overflow = "hidden";
   }
+    
+  button.onclick = function(e) {
+  e.preventDefault();
+    
+  validation();  
 
   xhr.open("POST", "index.php");
-
+    
   xhr.send(formData);
-  
-  document.getElementById('form').reset();
 
-  validation();
+  if (xhr.status == 200) {
+    openModal ();
+  } else (xhr.status != 200) {
+    alert('Powel naxyu');
+  }
+  document.getElementById('form').reset(); 
 };
 
-console.log('test');
