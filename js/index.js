@@ -138,14 +138,6 @@ button.onclick = function(e) {
 
   xhr.send(formData);
   
-  if (xhr.status != 200) {
-    // обработать ошибку
-    alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-  } else {
-    // вывести результат
-    alert( xhr.responseText ); // responseText -- текст ответа.
-  }
-
   document.getElementById('form').reset();
 
   validation();
