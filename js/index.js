@@ -144,3 +144,4 @@ button.onclick = function(e) {
   validation();
 };
 
+console.log('test');
