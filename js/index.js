@@ -1,3 +1,4 @@
+// Modal dialog
 // Get modal element
 let modal = document.getElementById("simpleModal");
 
@@ -10,10 +11,10 @@ let closeBtn = document.getElementsByClassName("closeBtn")[0];
 // Body overflow hidden
 let body = document.getElementById("body");
 
-// Listen for close click
+// Listen for CLOSE click
 closeBtn.addEventListener("click", closeModal);
 
-// Lister for outside click
+// Lister for OUTSIDE click
 window.addEventListener("click", outsideClick);
 
 // Function to close modal
@@ -138,14 +139,6 @@ button.onclick = function(e) {
 
   xhr.send(formData);
   
-  if (xhr.status != 200) {
-    // обработать ошибку
-    alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-  } else {
-    // вывести результат
-    alert( xhr.responseText ); // responseText -- текст ответа.
-  }
-
   document.getElementById('form').reset();
 
   validation();
