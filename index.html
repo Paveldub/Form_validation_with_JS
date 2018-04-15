@@ -22,10 +22,11 @@
             </div>
             <div>
                 <input type="password" name="password" class="textInput" placeholder="Password">
+                <div id="password_error" class="val_error"></div>
             </div>
             <div>
                 <input type="password" name="password_confirmation" class="textInput" placeholder="Password confirmation">
-                <div id="password_error" class="val_error"></div>
+                <div id="password_confirmation_error" class="val_error"></div>
             </div>
             <div>
                 <input type="submit" value="Submit" class="btn" name="register" id="button">
@@ -36,13 +37,13 @@
             <div class="modal__content">
                 <div class="modal__header">
                     <span class="closeBtn">&times;</span>
-                    <h2>Thank you</h2>
+                    <h2 id="modal_title">Thank you</h2>
                 </div>
                 <div class="modal__body">
-                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem a provident perferendis aperiam dignissimos assumenda veritatis dolor voluptas minima aut. Repellendus enim nostrum sapiente velit commodi neque cupiditate maiores magni!</h2>
+                    <p id="modal_body"></p>    
                 </div>
                 <div class="modal__footer">
-                    <h2>for your order!</h2>
+                    <h2 id="modal_footer">for your order!</h2>
                 </div>
            </div>
        </div>

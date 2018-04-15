@@ -1,6 +1,12 @@
 <?php
-    if (isset($_POST["register"])) {
+    print_r($_POST);
+
+    if (isset ($_POST["username"]) && isset ($_POST['password'])) {
         $user = $_POST["username"];
-        echo "Welcome ".$user;
+        print "Welcome ".$user;
     }
+
+    print 'Отправлена форма';
+
+    exit;
 ?>
